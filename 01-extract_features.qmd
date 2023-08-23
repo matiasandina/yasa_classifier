@@ -9,24 +9,26 @@ jupyter: python3
 
 Datasets have the following structure
 
-    .
-    ├── Mouse01
-    │   ├── Day1_dark_cycle
-    │   │   ├── EEG.mat
-    │   │   ├── EMG.mat
-    │   │   └── labels.mat
-    │   ├── Day1_light_cycle
-    │   │   ├── EEG.mat
-    │   │   ├── EMG.mat
-    │   │   └── labels.mat
-    │   ├── Day2_dark_cycle
-    │   │   ├── EEG.mat
-    │   │   ├── EMG.mat
-    │   │   └── labels.mat
-    │   └── Day2_light_cycle
-    │       ├── EEG.mat
-    │       ├── EMG.mat
-    │       └── labels.mat
+```         
+.
+├── Mouse01
+│   ├── Day1_dark_cycle
+│   │   ├── EEG.mat
+│   │   ├── EMG.mat
+│   │   └── labels.mat
+│   ├── Day1_light_cycle
+│   │   ├── EEG.mat
+│   │   ├── EMG.mat
+│   │   └── labels.mat
+│   ├── Day2_dark_cycle
+│   │   ├── EEG.mat
+│   │   ├── EMG.mat
+│   │   └── labels.mat
+│   └── Day2_light_cycle
+│       ├── EEG.mat
+│       ├── EMG.mat
+│       └── labels.mat
+```
 
 We want to cycle through and:
 
@@ -49,7 +51,8 @@ import pandas as pd
 sf = 512 #Hz
 epoch_len = 2.5 #sec
 
-root_folder = os.path.join(os.getcwd(),              "24-hour_recordings")
+data_folder = "/home/matias/Dropbox (MIT)/Matias_Choi_Lab/analysis_pipelines/sleep_data_AccuSleep/"
+root_folder = os.path.join(data_folder,"24-hour_recordings")
 
 def get_files(target_folder):
   eeg_file = os.path.join(target_folder, "EEG.mat")
@@ -95,7 +98,7 @@ def get_files(target_folder):
   label_df["label"] = label_df["label"].map(accusleep_dict)
   label_array = label_df["label"].values
   return eeg_array, emg_array, label_array
-  
+
 ```
 
 ```{python}
@@ -107,7 +110,6 @@ all_paths = list(Path(root_folder).glob('**/*'))
 all_dirs = sorted([folder for folder in all_paths if folder.is_dir() and "cycle" in str(folder)])
 # This is for the 4-hour
 #all_dirs = sorted([folder for folder in all_paths if folder.is_dir()])
-
 ```
 
 ```{python}
@@ -144,7 +146,7 @@ from staging import SleepStaging
 custom_bands =  [
           (0.4, 1, 'sdelta'), 
           (1, 4, 'fdelta'), 
-          (5, 11, 'theta'),
+          (5, 8, 'theta'),
           (8, 12, 'alpha'), 
           (12, 16, 'sigma'), 
           (16, 30, 'beta')
@@ -192,5 +194,4 @@ for directory in all_dirs:
 ```
 
 ```{python}
-
 ```

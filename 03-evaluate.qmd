@@ -40,7 +40,8 @@ import seaborn as sns
 sf = 512 #Hz
 epoch_len = 2.5 #sec
 
-root_folder = os.path.join(os.getcwd())
+data_folder = "/home/matias/Dropbox (MIT)/Matias_Choi_Lab/analysis_pipelines/sleep_data_AccuSleep/"
+root_folder = os.path.join(data_folder,"4-hour_recordings")
 
 def get_files(target_folder):
   eeg_file = os.path.join(target_folder, "EEG.mat")
@@ -165,7 +166,7 @@ def evaluate(predicted_labels, true_labels, plot_cm=False):
 ```{python}
 # Build the paths
 from pathlib import Path
-all_paths = list(Path(root_folder).glob('4-hour_recordings/*/**'))
+all_paths = list(Path(data_folder).glob('4-hour_recordings/*/**'))
 all_dirs = sorted([folder for folder in all_paths if folder.is_dir() and "Day" in str(folder)])
 print(f"Total recordings {len(all_dirs)}")
 ```
@@ -278,6 +279,7 @@ mouse, true_labels = predict_mouse(all_dirs[0])
 ```{python}
 plt.style.use("ggplot")
 plot_eeg_sample(mouse.data[0], n=150)
+plot_eeg_sample(mouse.data[1], n=150)
 ```
 
 ```{python}
@@ -294,6 +296,7 @@ fig.show()
 ```
 
 ```{python}
+plt.close()
 plt.style.use("ggplot")
 yasa.plot_hypnogram(true_labels[100:350], sf_hypno=1/2.5)
 plt.title("True Sleep Stages")
@@ -301,6 +304,7 @@ plt.show()
 ```
 
 ```{python}
+plt.close()
 plt.style.use("ggplot")
 yasa.plot_hypnogram(mouse._predicted[100:350], sf_hypno=1/2.5)
 plt.title("Predicted Sleep Stages")

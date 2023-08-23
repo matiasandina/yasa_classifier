@@ -11,7 +11,8 @@ import numpy as np
 from pathlib import Path
 import pandas as pd
 
-root_folder = os.path.join(os.getcwd(),"24-hour_recordings")
+data_folder = "/home/matias/Dropbox (MIT)/Matias_Choi_Lab/analysis_pipelines/sleep_data_AccuSleep/"
+root_folder = os.path.join(data_folder,"24-hour_recordings")
 # find the paths
 all_feature_csv = list(Path(root_folder).glob('**/*/*features.csv'))
 # read them
@@ -123,11 +124,13 @@ X_all = {
 import joblib
 from tqdm.notebook import tqdm
 from lightgbm import LGBMClassifier
-parent_dir = os.getcwd()
-outdir = parent_dir + "/output/classifiers/"
+print("Working from")
+os.getcwd()
+outdir = os.path.join(os.getcwd(), "output/classifiers/")
+print("Data will be written to:")
+print(outdir)
 if not os.path.isdir(outdir):
   os.makedirs(outdir)
-
 # Parallel processing when building the trees.
 params['n_jobs'] = 8
 
@@ -169,12 +172,14 @@ for name, X in tqdm(X_all.items()):
 
 ```
 
-      0%|          | 0/2 [00:00<?, ?it/s]
-    LGBMClassifier(class_weight={0: 0.6464329605333303, 2: 0.7942784646041191,4: 5.153446964613251},colsample_bytree=0.5, importance_type='gain', max_depth=5, n_estimators=400, n_jobs=8, num_leaves=90)
-    eeg (63 features) - training accuracy: 0.952
-    ['/home/matias/Dropbox (MIT)/Matias_Choi_Lab/analysis_pipelines/sleep_data_AccuSleep/output/classifiers/clf_eeg_lgb_gbdt_custom.joblib']
+```         
+  0%|          | 0/2 [00:00<?, ?it/s]
+LGBMClassifier(class_weight={0: 0.6464329605333303, 2: 0.7942784646041191,4: 5.153446964613251},colsample_bytree=0.5, importance_type='gain', max_depth=5, n_estimators=400, n_jobs=8, num_leaves=90)
+eeg (63 features) - training accuracy: 0.952
+['/home/matias/Dropbox (MIT)/Matias_Choi_Lab/analysis_pipelines/sleep_data_AccuSleep/output/classifiers/clf_eeg_lgb_gbdt_custom.joblib']
 
-    LGBMClassifier(class_weight={0: 0.6464329605333303, 2: 0.7942784646041191,4: 5.153446964613251},
-    colsample_bytree=0.5, importance_type='gain', max_depth=5,n_estimators=400, n_jobs=8, num_leaves=90)
-    eeg+emg (96 features) - training accuracy: 0.972
-    ['/home/matias/Dropbox (MIT)/Matias_Choi_Lab/analysis_pipelines/sleep_data_AccuSleep/output/classifiers/clf_eeg+emg_lgb_gbdt_custom.joblib']
+LGBMClassifier(class_weight={0: 0.6464329605333303, 2: 0.7942784646041191,4: 5.153446964613251},
+colsample_bytree=0.5, importance_type='gain', max_depth=5,n_estimators=400, n_jobs=8, num_leaves=90)
+eeg+emg (96 features) - training accuracy: 0.972
+['/home/matias/Dropbox (MIT)/Matias_Choi_Lab/analysis_pipelines/sleep_data_AccuSleep/output/classifiers/clf_eeg+emg_lgb_gbdt_custom.joblib']
+```
