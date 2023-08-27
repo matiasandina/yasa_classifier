@@ -146,7 +146,7 @@ from staging import SleepStaging
 custom_bands =  [
           (0.4, 1, 'sdelta'), 
           (1, 4, 'fdelta'), 
-          (5, 8, 'theta'),
+          (4, 8, 'theta'),
           (8, 12, 'alpha'), 
           (12, 16, 'sigma'), 
           (16, 30, 'beta')

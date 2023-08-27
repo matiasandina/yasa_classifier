@@ -1,0 +1,21 @@
+Folder,EEG_shape,EEG_epochs,EMG_shape,EMG_epoch,labels_len
+"('24-hour_recordings', 'Mouse01', 'Day1_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse01', 'Day1_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse01', 'Day2_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse01', 'Day2_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse02', 'Day1_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse02', 'Day1_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse02', 'Day2_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse02', 'Day2_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse03', 'Day1_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse03', 'Day1_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse03', 'Day2_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse03', 'Day2_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse04', 'Day1_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse04', 'Day1_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse04', 'Day2_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse04', 'Day2_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse05', 'Day1_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse05', 'Day1_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse05', 'Day2_dark_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
+"('24-hour_recordings', 'Mouse05', 'Day2_light_cycle')","(22118400,)",17280.0,"(22118400,)",17280.0,17280
