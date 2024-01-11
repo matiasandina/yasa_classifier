@@ -15,4 +15,6 @@ custom_bands =  [
 In general, all rounds train and predict with very similar performance. Folders are named using the `theta_low_high` pattern. For example, `theta_5_8` contains the classifiers run with `(5, 8, 'theta')`
 
 
-The classifiers given under no folder are the same as `theta_4_8`
+The classifiers given under no folder are the same as `theta_4_8`.
+
+These classifiers were trained using 512 Hz data from Accusleep and a 2.5 sec epoch_sec.
