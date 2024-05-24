@@ -23,7 +23,7 @@ Training was performed using extracted features from 24h recordings.
 Evaluation is performed using 4h recordings that were not used for training.
 
 ```{python imports-globals}
-import yasa
+fimport yasa
 from staging import SleepStaging
 import matplotlib.pyplot as plt
 import numpy as np

@@ -1,0 +1,5 @@
+sf: 512 # Hz
+epoch_sec: 2.5 # seconds for each epoch to be classified
+validate_lengths: False
+scale_features: True
+recompute_imbalance: False
