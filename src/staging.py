@@ -193,6 +193,7 @@ class SleepStaging:
         # Downsample if sf != 100
         assert sf > 80, 'Sampling frequency must be at least 80 Hz.'
         if sf != 100:
+            print(f"Input sampling frequency was {sf}Hz, resampling to 100 Hz")
             raw_pick.resample(100, npad="auto")
             sf = raw_pick.info['sfreq']
 
@@ -260,6 +261,12 @@ class SleepStaging:
                 'hmob': hmob,
                 'hcomp': hcomp
             }
+
+            # RMS feature for EMG
+            if c == 'emg':
+                # Log-transformed RMS calculation
+                rms_emg = np.log10(np.sqrt(np.mean(epochs**2, axis=1)))
+                feat['log_rms_emg'] = rms_emg
     
             # Calculate spectral power features (for EEG + EOG)
             freqs, psd = sp_sig.welch(epochs, sf, **kwargs_welch)
