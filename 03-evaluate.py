@@ -45,9 +45,11 @@ with Progress() as progress:
     task1 = progress.add_task("[cyan]Preparing to evaluate classifiers...", total=len(classifier_paths))
 
     for classifier_path in classifier_paths:
-        progress.update(task1, description=f"[cyan]Evaluating {classifier_path.parts[-2]} ")
-        classifier_results_dir = results_dir / classifier_path.stem  # Create a subdirectory for each classifier
+        clf_name = classifier_path.parts[-2]
+        progress.update(task1, description=f"[cyan]Evaluating {clf_name} ")
+        classifier_results_dir = results_dir /  clf_name # Create a subdirectory for each classifier
         classifier_results_dir.mkdir(exist_ok=True)
+        #console.log(f"All results will be saved to {classifier_results_dir}")
         
         # Dictionaries to hold results
         results = {
@@ -60,7 +62,7 @@ with Progress() as progress:
         task2 = progress.add_task(f"[magenta]Evaluating mice", total=len(all_dirs))
         
         for mouse_folder in all_dirs:
-            progress.update(task2, description=f"[magenta]Evaluating mouse {mouse_folder}")
+            progress.update(task2, description=f"[magenta]Evaluating {clf_name} on mouse {mouse_folder}")
             start_time = time.time()
             sls, true_labels = predict_mouse(mouse_folder, config, classifier_path)
             end_time = time.time()
@@ -79,7 +81,7 @@ with Progress() as progress:
         # Save all results in a single .npz file
         np.savez_compressed(classifier_results_dir / "evaluation_metrics.npz", **results)
 
-        console.print(f"Results saved for [blue]{classifier_path.name}[/blue] in [blue]{classifier_results_dir}[/blue]", style='green')
+        console.print(f"Results saved for [blue]{classifier_path.stem}[/blue] in [blue]{classifier_results_dir}[/blue]", style='green')
         progress.advance(task1)
 
 console.log("All models evaluated and results saved successfully.", style="bold on green")
