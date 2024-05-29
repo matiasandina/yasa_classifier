@@ -11,6 +11,12 @@ from lightgbm import LGBMClassifier
 import datetime
 import polars as pl
 
+def str_in_list(string, query_list):
+    '''
+    function checks if `string` is contained in any `query_list` elements 
+    '''
+    return any(element in string for element in query_list)
+
 # Formating and loggers 
 ############################################################
 pretty.install()
@@ -106,26 +112,33 @@ params["class_weight"] = class_weight_dict
 cols_all = df.column_names
 cols_eeg = [col for col in cols_all if col.startswith('eeg_')]
 cols_emg = [col for col in cols_all if col.startswith('emg_')]
+console.rule("Feature Set")
+console.log(f"Complete set of features contains {len(cols_all)} features.")
+console.log(f"EEG features: {len(cols_eeg)}. EMG features: {len(cols_emg)}")
 
 # Define predictors, 
 # excluding certain features for importance testing
 exclude_features = {
     'full': [], # all predictors included
-    'no_kurt': ['eeg_kurt'],
-    'no_std': ['eeg_std'],
-    'no_log_rms': ['emg_log_rms']
+    'no_kurt': ['kurt'],
+    'no_perm': ['perm'],
+    'no_std': ['std'],
+    'no_log_rms': ['log_rms']
 }
 
+console.rule("Feature Exclusion")
 console.log("Combinations of these feature selections will be trained")
 console.print(exclude_features)
 
 X_all = {}
 for key, exclusions in exclude_features.items():
-    included_eeg = [col for col in cols_eeg if col not in exclusions]
-    included_emg = [col for col in cols_emg if col not in exclusions]
+    console.print(f"Excluding columns contained in {exclusions}")
+    included_eeg = [col for col in cols_eeg if not str_in_list(col, exclusions)]
+    included_emg = [col for col in cols_emg if not str_in_list(col, exclusions)]
     X_all[f'eeg_{key}'] = df.select(included_eeg)
     X_all[f'eeg+emg_{key}'] = df.select(included_eeg + included_emg)
 
+console.rule("Model Training")
 console.log(f"A total of {len(X_all.keys())} models will be trained, see below")
 console.print(X_all.keys())
 
