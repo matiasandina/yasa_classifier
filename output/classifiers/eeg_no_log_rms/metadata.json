@@ -1,5 +1,5 @@
 {
-    "training_dt": "2024-05-24T16:00:53.905663",
+    "training_dt": "2024-05-29T12:53:54.603323",
     "model_parameters": {
         "boosting_type": "gbdt",
         "n_estimators": 400,

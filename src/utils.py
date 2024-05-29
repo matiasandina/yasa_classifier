@@ -259,7 +259,7 @@ def evaluate(predicted_labels, true_labels, plot_cm=False):
   
   cohen_kappa = cohen_kappa_score(
     predicted_labels, true_labels)
-  print(f"Cohen's Kappa: {cohen_kappa}")
+  print(f"Accuracy: {accuracy:.3f} -- Cohen's Kappa: {cohen_kappa:.3f}")
   cm = confusion_matrix(predicted_labels, true_labels)
   if plot_cm:
     ax=plt.subplot()

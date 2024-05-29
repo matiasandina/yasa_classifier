@@ -8,7 +8,7 @@ eeg_std_c7min_norm,140104.74464571
 eeg_nzc_c7min_norm,124406.03717125577
 eeg_std_p2min_norm,112914.05645195924
 eeg_sdelta_c7min_norm,100461.27579037023
-eeg_dt_p2min_norm,97420.75414267444
+eeg_dt_p2min_norm,97420.63776067161
 eeg_iqr_c7min_norm,78318.28940580449
 eeg_petrosian_c7min_norm,59146.28583893912
 eeg_fdelta_c7min_norm,55259.97915200725
@@ -38,7 +38,7 @@ eeg_ds_c7min_norm,9836.132864600855
 eeg_alpha,8315.572335325476
 eeg_at_p2min_norm,7998.726233892069
 eeg_beta_c7min_norm,7911.845968241884
-eeg_db_p2min_norm,7834.872516876246
+eeg_db_p2min_norm,7834.988898879076
 eeg_hmob_p2min_norm,7508.911260331039
 eeg_higuchi_p2min_norm,7393.475211802441
 eeg_at,5723.366842615418
